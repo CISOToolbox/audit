@@ -8,3 +8,4 @@ deploy-staging.sh
 .vscode/
 .idea/
 referentiels_catalog.js
+.gitignore
