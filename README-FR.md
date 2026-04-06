@@ -25,7 +25,7 @@ La plupart des outils d'audit sont soit des plateformes GRC lourdes necessitant 
 - Les 93 mesures de l'Annexe A de l'ISO 27001:2022, organisees par domaine
 - Evaluation par mesure (Conforme, NC Majeure, NC Mineure, Point Sensible, Piste de Progres, N/A)
 - Champs structures pour les non-conformites (critere, constat factuel, cause, action corrective)
-- Capture de preuves photographiques (images stockees localement dans IndexedDB)
+- Capture de preuves sous forme d'images (images stockees localement dans IndexedDB)
 - Checklist de revue documentaire
 - Planning d'audit avec creneaux horaires
 - Score de maturite pondere avec note (A-E)
@@ -41,7 +41,7 @@ La plupart des outils d'audit sont soit des plateformes GRC lourdes necessitant 
 - **Mode HDS** -- active les mesures specifiques HDS
 - **6 statuts** par mesure : Conforme, NC Majeure, NC Mineure, Point Sensible, Piste de Progres, N/A
 - **Champs NC structures** -- critere, constat factuel, cause, action corrective (affiches uniquement pour les non-conformites)
-- **Champs de preuves** -- texte libre pour constats et preuves, plus preuves photographiques
+- **Champs de preuves** -- texte libre pour constats et preuves, plus preuves sous forme d'images
 - **Questions d'aide** -- questions contextuelles par mesure pour guider l'auditeur
 - **Modeles de formulation** -- formulations de NC pre-redigees copiables dans les constats
 
@@ -150,7 +150,7 @@ js/
 
 **Delegation d'evenements** -- Aucun gestionnaire inline. Toutes les interactions utilisent les attributs `data-click`, `data-change`, `data-input` dispatches par `_safeDispatch()`.
 
-**IndexedDB pour les images** -- Les preuves photographiques sont stockees dans IndexedDB (pas dans le fichier JSON) pour eviter de gonfler les sauvegardes. Les images sont compressees en JPEG (800px max, qualite 70%) avant stockage.
+**IndexedDB pour les images** -- Les preuves sous forme d'images sont stockees dans IndexedDB (pas dans le fichier JSON) pour eviter de gonfler les sauvegardes. Les images sont compressees en JPEG (800px max, qualite 70%) avant stockage.
 
 **Score de maturite pondere** -- `Score = (C×1 + PP×0.75 + PS×0.5 + NCmin×0.25) / (Audites - N/A)`. Note : A (>=80%), B (>=65%), C (>=50%), D (>=35%), E (<35%).
 

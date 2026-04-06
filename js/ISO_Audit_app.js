@@ -25,16 +25,16 @@ let _currentPanel = "dashboard";
 // ═══════════════════════════════════════════════════════════════════════
 
 const STATUS_MAP = {
-    c: { label: function() { return t("audit.status.c"); }, color: "#27ae60" },
-    ncmaj: { label: function() { return t("audit.status.ncmaj"); }, color: "#e74c3c" },
-    ncmin: { label: function() { return t("audit.status.ncmin"); }, color: "#f39c12" },
-    ps: { label: function() { return t("audit.status.ps"); }, color: "#8e44ad" },
-    pp: { label: function() { return t("audit.status.pp"); }, color: "#3498db" },
-    na: { label: function() { return t("audit.status.na"); }, color: "#95a5a6" }
+    c: { label: function() { return t("audit.status.c"); }, color: "#16a34a" },
+    ncmaj: { label: function() { return t("audit.status.ncmaj"); }, color: "#dc2626" },
+    ncmin: { label: function() { return t("audit.status.ncmin"); }, color: "#f59e0b" },
+    ps: { label: function() { return t("audit.status.ps"); }, color: "#7c3aed" },
+    pp: { label: function() { return t("audit.status.pp"); }, color: "#3b82f6" },
+    na: { label: function() { return t("audit.status.na"); }, color: "#94a3b8" }
 };
 
 function statusLabel(s) { return STATUS_MAP[s] ? STATUS_MAP[s].label() : ""; }
-function statusColor(s) { return STATUS_MAP[s] ? STATUS_MAP[s].color : "#999"; }
+function statusColor(s) { return STATUS_MAP[s] ? STATUS_MAP[s].color : "#94a3b8"; }
 
 function getCtrl(id) { return CONTROLS.find(function(c) { return c.id === id; }); }
 var _EMPTY_FINDING = { status: "", preuve: "", constats: "", ecart_critere: "", ecart_constat: "", ecart_cause: "", ecart_action: "", images: [] };
@@ -60,19 +60,11 @@ function isEcart(status) { return status === "ncmaj" || status === "ncmin" || st
 
 function selectPanel(panelId) {
     _currentPanel = panelId;
-    // Close mobile sidebar
     document.querySelector(".sidebar").classList.remove("open");
-    // Update sidebar active
-    document.querySelectorAll(".sidebar-item").forEach(function(s) { s.classList.remove("active"); });
-    document.querySelectorAll(".sidebar-item").forEach(function(s) {
-        var args = s.getAttribute("data-args");
-        if (args && JSON.parse(args)[0] === panelId) s.classList.add("active");
-    });
-    // Show panel
+    _updateSidebarAccordion(panelId);
     document.querySelectorAll(".tab-panel").forEach(function(p) { p.classList.remove("active"); });
     var panel = document.getElementById("panel-" + panelId);
     if (panel) panel.classList.add("active");
-    // Render panel content
     if (panelId === "dashboard") renderDashboard();
     else if (panelId.startsWith("domain-")) renderDomain(panelId.replace("domain-", ""));
     else if (panelId === "docreview" && typeof renderDocReview === "function") renderDocReview();
@@ -286,7 +278,7 @@ function computeStats() {
     var scored = S.audited - S.na;
     S.score = scored > 0 ? Math.round(((S.c * 1 + S.pp * 0.75 + S.ps * 0.5 + S.ncmin * 0.25) / scored) * 100) : 0;
     S.grade = S.score >= 80 ? "A" : S.score >= 65 ? "B" : S.score >= 50 ? "C" : S.score >= 35 ? "D" : "E";
-    S.gradeColor = S.score >= 80 ? "#27ae60" : S.score >= 65 ? "#2ecc71" : S.score >= 50 ? "#f39c12" : S.score >= 35 ? "#e67e22" : "#e74c3c";
+    S.gradeColor = S.score >= 80 ? "#16a34a" : S.score >= 65 ? "#22c55e" : S.score >= 50 ? "#f59e0b" : S.score >= 35 ? "#f97316" : "#dc2626";
     // Per domain
     S.domains = {};
     DOMAINS.forEach(function(dom) {
@@ -321,12 +313,12 @@ function renderDashboard() {
     h += '<div class="kpi-grid">';
     h += '<div class="kpi-box"><div class="kpi-value">' + S.total + '</div><div class="kpi-label">' + t("audit.dash.total") + '</div></div>';
     h += '<div class="kpi-box"><div class="kpi-value">' + S.audited + '</div><div class="kpi-label">' + t("audit.dash.audited") + '</div></div>';
-    h += '<div class="kpi-box"><div class="kpi-value" style="color:#27ae60">' + S.c + '</div><div class="kpi-label">' + t("audit.dash.conformes") + '</div></div>';
-    h += '<div class="kpi-box"><div class="kpi-value" style="color:#e74c3c">' + S.ncmaj + '</div><div class="kpi-label">' + t("audit.dash.nc_maj") + '</div></div>';
-    h += '<div class="kpi-box"><div class="kpi-value" style="color:#f39c12">' + S.ncmin + '</div><div class="kpi-label">' + t("audit.dash.nc_min") + '</div></div>';
-    h += '<div class="kpi-box"><div class="kpi-value" style="color:#8e44ad">' + S.ps + '</div><div class="kpi-label">' + t("audit.dash.ps") + '</div></div>';
-    h += '<div class="kpi-box"><div class="kpi-value" style="color:#3498db">' + S.pp + '</div><div class="kpi-label">' + t("audit.dash.pp") + '</div></div>';
-    h += '<div class="kpi-box"><div class="kpi-value" style="color:#95a5a6">' + S.na + '</div><div class="kpi-label">' + t("audit.dash.na") + '</div></div>';
+    h += '<div class="kpi-box"><div class="kpi-value" style="color:#16a34a">' + S.c + '</div><div class="kpi-label">' + t("audit.dash.conformes") + '</div></div>';
+    h += '<div class="kpi-box"><div class="kpi-value" style="color:#dc2626">' + S.ncmaj + '</div><div class="kpi-label">' + t("audit.dash.nc_maj") + '</div></div>';
+    h += '<div class="kpi-box"><div class="kpi-value" style="color:#f59e0b">' + S.ncmin + '</div><div class="kpi-label">' + t("audit.dash.nc_min") + '</div></div>';
+    h += '<div class="kpi-box"><div class="kpi-value" style="color:#7c3aed">' + S.ps + '</div><div class="kpi-label">' + t("audit.dash.ps") + '</div></div>';
+    h += '<div class="kpi-box"><div class="kpi-value" style="color:#3b82f6">' + S.pp + '</div><div class="kpi-label">' + t("audit.dash.pp") + '</div></div>';
+    h += '<div class="kpi-box"><div class="kpi-value" style="color:#94a3b8">' + S.na + '</div><div class="kpi-label">' + t("audit.dash.na") + '</div></div>';
     h += '<div class="kpi-box"><div class="kpi-value" style="color:' + S.gradeColor + '">' + S.score + '%</div><div class="kpi-label">' + t("audit.dash.score") + '</div></div>';
     h += '<div class="kpi-box"><div class="kpi-value" style="color:' + S.gradeColor + '">' + S.grade + '</div><div class="kpi-label">' + t("audit.dash.grade_level") + '</div></div>';
     h += '</div>';
@@ -420,19 +412,19 @@ function buildGauge(S) {
         var ta = startAngle + (endAngle - startAngle) * (t / 100);
         var x1 = cx + (r - 8) * Math.cos(ta), y1 = cy + (r - 8) * Math.sin(ta);
         var x2 = cx + (r + 2) * Math.cos(ta), y2 = cy + (r + 2) * Math.sin(ta);
-        ticks += '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="#ccc" stroke-width="1.5"/>';
+        ticks += '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="#cbd5e1" stroke-width="1.5"/>';
     });
 
     var svg = '<svg viewBox="0 0 220 130" style="width:200px;height:auto;display:block;margin:0 auto">';
     // Background arc
-    svg += '<path d="M' + bgX1.toFixed(1) + ' ' + bgY1.toFixed(1) + ' A ' + r + ' ' + r + ' 0 0 1 ' + (cx + r).toFixed(1) + ' ' + cy + '" fill="none" stroke="#eee" stroke-width="' + sw + '" stroke-linecap="round"/>';
+    svg += '<path d="M' + bgX1.toFixed(1) + ' ' + bgY1.toFixed(1) + ' A ' + r + ' ' + r + ' 0 0 1 ' + (cx + r).toFixed(1) + ' ' + cy + '" fill="none" stroke="#e2e8f0" stroke-width="' + sw + '" stroke-linecap="round"/>';
     // Score arc
     if (score > 0) {
         svg += '<path d="M' + bgX1.toFixed(1) + ' ' + bgY1.toFixed(1) + ' A ' + r + ' ' + r + ' 0 ' + la + ' 1 ' + fgX.toFixed(1) + ' ' + fgY.toFixed(1) + '" fill="none" stroke="' + S.gradeColor + '" stroke-width="' + sw + '" stroke-linecap="round"/>';
     }
     svg += ticks;
     svg += '<text x="' + cx + '" y="' + (cy - 4) + '" text-anchor="middle" font-size="22" font-weight="700" fill="' + S.gradeColor + '">' + score + '%</text>';
-    svg += '<text x="' + cx + '" y="' + (cy + 14) + '" text-anchor="middle" font-size="10" fill="#999">' + t("audit.dash.score") + '</text>';
+    svg += '<text x="' + cx + '" y="' + (cy + 14) + '" text-anchor="middle" font-size="10" fill="#94a3b8">' + t("audit.dash.score") + '</text>';
     svg += '<text x="' + cx + '" y="' + (cy + 30) + '" text-anchor="middle" font-size="14" font-weight="600" fill="' + S.gradeColor + '">' + t("audit.dash.grade_level") + ' ' + S.grade + '</text>';
     svg += '</svg>';
     return svg;
@@ -444,15 +436,15 @@ function buildGauge(S) {
 
 function buildDonut(S) {
     var data = [
-        { label: t("audit.status.c"), value: S.c, color: "#27ae60" },
-        { label: t("audit.status.ncmaj"), value: S.ncmaj, color: "#e74c3c" },
-        { label: t("audit.status.ncmin"), value: S.ncmin, color: "#f39c12" },
-        { label: t("audit.status.ps"), value: S.ps, color: "#8e44ad" },
-        { label: t("audit.status.pp"), value: S.pp, color: "#3498db" },
-        { label: t("audit.status.na"), value: S.na, color: "#95a5a6" }
+        { label: t("audit.status.c"), value: S.c, color: "#16a34a" },
+        { label: t("audit.status.ncmaj"), value: S.ncmaj, color: "#dc2626" },
+        { label: t("audit.status.ncmin"), value: S.ncmin, color: "#f59e0b" },
+        { label: t("audit.status.ps"), value: S.ps, color: "#7c3aed" },
+        { label: t("audit.status.pp"), value: S.pp, color: "#3b82f6" },
+        { label: t("audit.status.na"), value: S.na, color: "#94a3b8" }
     ].filter(function(d) { return d.value > 0; });
     var todo = S.total - S.audited;
-    if (todo > 0) data.push({ label: t("audit.dash.non_audited"), value: todo, color: "#ddd" });
+    if (todo > 0) data.push({ label: t("audit.dash.non_audited"), value: todo, color: "#cbd5e1" });
     if (data.length === 0) return '<div style="text-align:center;color:var(--text-muted);padding:20px">&mdash;</div>';
     var total = data.reduce(function(sum, d) { return sum + d.value; }, 0);
     var cx = 80, cy = 80, outerR = 70, innerR = 42;
@@ -471,7 +463,7 @@ function buildDonut(S) {
     });
     svg += '<circle cx="' + cx + '" cy="' + cy + '" r="38" fill="white"/>';
     svg += '<text x="' + cx + '" y="' + (cy - 2) + '" text-anchor="middle" font-size="18" font-weight="700">' + S.audited + '</text>';
-    svg += '<text x="' + cx + '" y="' + (cy + 12) + '" text-anchor="middle" font-size="8" fill="#999">' + t("audit.dash.audited").toUpperCase() + '</text>';
+    svg += '<text x="' + cx + '" y="' + (cy + 12) + '" text-anchor="middle" font-size="8" fill="#94a3b8">' + t("audit.dash.audited").toUpperCase() + '</text>';
     svg += '</svg>';
     // Legend
     svg += '<div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px">';
@@ -508,16 +500,16 @@ function buildRadar(S) {
             var p = polarToXY(i, lr);
             pts += (i === 0 ? 'M' : 'L') + p.x.toFixed(1) + ',' + p.y.toFixed(1);
         }
-        svg += '<path d="' + pts + 'Z" fill="none" stroke="#e0e0e0" stroke-width="0.5"/>';
+        svg += '<path d="' + pts + 'Z" fill="none" stroke="#e2e8f0" stroke-width="0.5"/>';
         // Level label on first axis
         var lp = polarToXY(0, lr);
-        svg += '<text x="' + (lp.x + 4).toFixed(1) + '" y="' + (lp.y + 3).toFixed(1) + '" font-size="7" fill="#ccc">' + (l * 25) + '%</text>';
+        svg += '<text x="' + (lp.x + 4).toFixed(1) + '" y="' + (lp.y + 3).toFixed(1) + '" font-size="7" fill="#cbd5e1">' + (l * 25) + '%</text>';
     }
 
     // Axes
     for (var i = 0; i < n; i++) {
         var p = polarToXY(i, r);
-        svg += '<line x1="' + cx + '" y1="' + cy + '" x2="' + p.x.toFixed(1) + '" y2="' + p.y.toFixed(1) + '" stroke="#e0e0e0" stroke-width="0.5"/>';
+        svg += '<line x1="' + cx + '" y1="' + cy + '" x2="' + p.x.toFixed(1) + '" y2="' + p.y.toFixed(1) + '" stroke="#e2e8f0" stroke-width="0.5"/>';
     }
 
     // Data polygon
@@ -528,24 +520,24 @@ function buildRadar(S) {
         var p = polarToXY(idx, r * val);
         dpts += (idx === 0 ? 'M' : 'L') + p.x.toFixed(1) + ',' + p.y.toFixed(1);
     });
-    svg += '<path d="' + dpts + 'Z" fill="rgba(52,152,219,0.15)" stroke="#3498db" stroke-width="1.5"/>';
+    svg += '<path d="' + dpts + 'Z" fill="rgba(59,130,246,0.15)" stroke="#3b82f6" stroke-width="1.5"/>';
 
     // Data points and labels
     DOMAINS.forEach(function(dom, idx) {
         var ds = S.domains[dom.id];
         var val = ds && ds.score > 0 ? ds.score / 100 : 0;
         var p = polarToXY(idx, r * val);
-        svg += '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="3" fill="#3498db"/>';
+        svg += '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="3" fill="#3b82f6"/>';
 
         // Label — domain name
         var labelR = r + 35;
         var lp = polarToXY(idx, labelR);
         var anchor = lp.x < cx - 10 ? "end" : lp.x > cx + 10 ? "start" : "middle";
-        svg += '<text x="' + lp.x.toFixed(1) + '" y="' + (lp.y + 4).toFixed(1) + '" text-anchor="' + anchor + '" font-size="11" fill="#555" font-weight="600">' + esc(dom.label) + '</text>';
+        svg += '<text x="' + lp.x.toFixed(1) + '" y="' + (lp.y + 4).toFixed(1) + '" text-anchor="' + anchor + '" font-size="11" fill="#475569" font-weight="600">' + esc(dom.label) + '</text>';
         // Score % near point
         if (val > 0) {
             var sp = polarToXY(idx, r * val + 12);
-            svg += '<text x="' + sp.x.toFixed(1) + '" y="' + (sp.y - 2).toFixed(1) + '" text-anchor="middle" font-size="7" fill="#3498db" font-weight="500">' + ds.score + '%</text>';
+            svg += '<text x="' + sp.x.toFixed(1) + '" y="' + (sp.y - 2).toFixed(1) + '" text-anchor="middle" font-size="7" fill="#3b82f6" font-weight="500">' + ds.score + '%</text>';
         }
     });
 
@@ -564,13 +556,13 @@ function buildStackedBars(S) {
         if (!ds) return;
         var total = ds.total || 1;
         var segs = [
-            { val: ds.c, color: "#27ae60" },
-            { val: ds.pp, color: "#3498db" },
-            { val: ds.ps, color: "#8e44ad" },
-            { val: ds.ncmin, color: "#f39c12" },
-            { val: ds.ncmaj, color: "#e74c3c" },
-            { val: ds.na, color: "#95a5a6" },
-            { val: ds.total - ds.audited, color: "#eee" }
+            { val: ds.c, color: "#16a34a" },
+            { val: ds.pp, color: "#3b82f6" },
+            { val: ds.ps, color: "#7c3aed" },
+            { val: ds.ncmin, color: "#f59e0b" },
+            { val: ds.ncmaj, color: "#dc2626" },
+            { val: ds.na, color: "#94a3b8" },
+            { val: ds.total - ds.audited, color: "#e2e8f0" }
         ];
         h += '<div class="stacked-row">';
         h += '<div class="stacked-label">' + esc(dom.label) + ' <span style="color:var(--text-muted);font-size:0.85em">' + ds.total + ' mesures</span></div>';
@@ -608,9 +600,9 @@ function buildHDSBreakdown(S) {
 function buildHDSBar(F, label) {
     var total = F.total || 1;
     var rows = [
-        { l: t("audit.dash.hds_conformes"), v: F.c, color: "#27ae60" },
-        { l: t("audit.dash.hds_nc"), v: F.nc, color: "#e74c3c" },
-        { l: t("audit.dash.hds_other"), v: F.other, color: "#8e44ad" }
+        { l: t("audit.dash.hds_conformes"), v: F.c, color: "#16a34a" },
+        { l: t("audit.dash.hds_nc"), v: F.nc, color: "#dc2626" },
+        { l: t("audit.dash.hds_other"), v: F.other, color: "#7c3aed" }
     ];
     var h = '<div><div style="font-weight:600;font-size:0.85em;margin-bottom:6px">' + esc(label) + '</div>';
     rows.forEach(function(r) {
@@ -630,15 +622,15 @@ function buildDomainBars(S) {
         var ds = S.domains[dom.id];
         if (!ds) return;
         var scorePct = ds.score;
-        var scoreColor = scorePct >= 80 ? "#27ae60" : scorePct >= 50 ? "#f39c12" : "#e74c3c";
+        var scoreColor = scorePct >= 80 ? "#16a34a" : scorePct >= 50 ? "#f59e0b" : "#dc2626";
         h += '<div style="display:flex;align-items:center;gap:8px;font-size:0.8em">';
         h += '<span style="min-width:160px;font-weight:600">' + esc(dom.label) + '</span>';
         h += '<div style="flex:1;height:16px;background:#eee;border-radius:8px;overflow:hidden;position:relative">';
-        if (ds.c > 0) h += '<div style="position:absolute;height:100%;width:' + (ds.c / ds.total * 100) + '%;background:#27ae60"></div>';
-        if (ds.ncmaj > 0) h += '<div style="position:absolute;height:100%;left:' + (ds.c / ds.total * 100) + '%;width:' + (ds.ncmaj / ds.total * 100) + '%;background:#e74c3c"></div>';
-        if (ds.ncmin > 0) h += '<div style="position:absolute;height:100%;left:' + ((ds.c + ds.ncmaj) / ds.total * 100) + '%;width:' + (ds.ncmin / ds.total * 100) + '%;background:#f39c12"></div>';
-        if (ds.ps > 0) h += '<div style="position:absolute;height:100%;left:' + ((ds.c + ds.ncmaj + ds.ncmin) / ds.total * 100) + '%;width:' + (ds.ps / ds.total * 100) + '%;background:#8e44ad"></div>';
-        if (ds.pp > 0) h += '<div style="position:absolute;height:100%;left:' + ((ds.c + ds.ncmaj + ds.ncmin + ds.ps) / ds.total * 100) + '%;width:' + (ds.pp / ds.total * 100) + '%;background:#3498db"></div>';
+        if (ds.c > 0) h += '<div style="position:absolute;height:100%;width:' + (ds.c / ds.total * 100) + '%;background:#16a34a"></div>';
+        if (ds.ncmaj > 0) h += '<div style="position:absolute;height:100%;left:' + (ds.c / ds.total * 100) + '%;width:' + (ds.ncmaj / ds.total * 100) + '%;background:#dc2626"></div>';
+        if (ds.ncmin > 0) h += '<div style="position:absolute;height:100%;left:' + ((ds.c + ds.ncmaj) / ds.total * 100) + '%;width:' + (ds.ncmin / ds.total * 100) + '%;background:#f59e0b"></div>';
+        if (ds.ps > 0) h += '<div style="position:absolute;height:100%;left:' + ((ds.c + ds.ncmaj + ds.ncmin) / ds.total * 100) + '%;width:' + (ds.ps / ds.total * 100) + '%;background:#7c3aed"></div>';
+        if (ds.pp > 0) h += '<div style="position:absolute;height:100%;left:' + ((ds.c + ds.ncmaj + ds.ncmin + ds.ps) / ds.total * 100) + '%;width:' + (ds.pp / ds.total * 100) + '%;background:#3b82f6"></div>';
         h += '</div>';
         h += '<span style="min-width:40px;text-align:right;font-weight:600;color:' + scoreColor + '">' + scorePct + '%</span>';
         h += '</div>';
@@ -674,7 +666,7 @@ function renderJournal() {
         var d = new Date(entry.ts);
         var time = d.toLocaleDateString(_locale === "en" ? "en-GB" : "fr-FR") + " " + d.toLocaleTimeString(_locale === "en" ? "en-GB" : "fr-FR", { hour: "2-digit", minute: "2-digit" });
         var typeLabel = t("audit.journal.type_" + entry.type) || entry.type;
-        var typeColor = entry.type === "status" ? "#3498db" : entry.type === "field" ? "#95a5a6" : entry.type === "create" ? "#27ae60" : "#6c757d";
+        var typeColor = entry.type === "status" ? "#3b82f6" : entry.type === "field" ? "#94a3b8" : entry.type === "create" ? "#16a34a" : "#64748b";
         var text = "";
         if (entry.data) {
             if (entry.data.ctrl) text += entry.data.ctrl;

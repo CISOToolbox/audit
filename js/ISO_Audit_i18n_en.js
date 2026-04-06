@@ -193,5 +193,14 @@ _registerTranslations("en", {
     "audit.export.word_ok": "Word exported",
     "audit.export.word_loading": "Preparing export...",
     "audit.export.docreview_ok": "Document review exported",
-    "audit.status.na_export": "Not audited"
+    "audit.status.na_export": "Not audited",
+
+    "matrix.low": "Low",
+    "matrix.moderate": "Moderate",
+    "matrix.significant": "Significant",
+    "matrix.high": "High",
+    "matrix.critical": "Critical",
+    "matrix.extreme": "Extreme",
+    "matrix.x": "Impact",
+    "matrix.y": "Likelihood",
 });

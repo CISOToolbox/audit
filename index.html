@@ -41,23 +41,33 @@
 <nav class="sidebar">
     <div class="sidebar-collapse" data-click="toggleSidebar" data-i18n-title="sidebar_hide" title="Masquer le menu">&#10005;</div>
     <div class="sidebar-item active" data-click="selectPanel" data-args='["dashboard"]' data-i18n="audit.sidebar.dashboard">Tableau de bord</div>
-    <div class="sidebar-section" data-i18n="audit.sidebar.section_clauses">Clauses ISO 27001</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["domain-4"]' data-i18n="audit.sidebar.domain.4">&sect;4 Contexte de l'organisme</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["domain-5"]' data-i18n="audit.sidebar.domain.5">&sect;5 Leadership</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["domain-6"]' data-i18n="audit.sidebar.domain.6">&sect;6 Planification</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["domain-7"]' data-i18n="audit.sidebar.domain.7">&sect;7 Support</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["domain-8"]' data-i18n="audit.sidebar.domain.8">&sect;8 Réalisation</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["domain-9"]' data-i18n="audit.sidebar.domain.9">&sect;9 Évaluation</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["domain-10"]' data-i18n="audit.sidebar.domain.10">&sect;10 Amélioration</div>
-    <div class="sidebar-section" data-i18n="audit.sidebar.section_annexe">Annexe A</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["domain-A5"]' data-i18n="audit.sidebar.domain.A5">A.5 Organisationnelles</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["domain-A6"]' data-i18n="audit.sidebar.domain.A6">A.6 Personnes</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["domain-A7"]' data-i18n="audit.sidebar.domain.A7">A.7 Physiques</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["domain-A8"]' data-i18n="audit.sidebar.domain.A8">A.8 Technologiques</div>
-    <div class="sidebar-section" data-i18n="audit.sidebar.section_outils">Outils</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["docreview"]' data-i18n="audit.sidebar.docreview">Revue documentaire</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["planning"]' data-i18n="audit.sidebar.planning">Planning</div>
-    <div class="sidebar-item" data-click="selectPanel" data-args='["journal"]' data-i18n="audit.sidebar.journal">Journal</div>
+    <div class="sidebar-group" data-panels="domain-4,domain-5,domain-6,domain-7,domain-8,domain-9,domain-10">
+        <div class="sidebar-section sidebar-toggle" data-click="toggleGroup" data-pass-el data-i18n="audit.sidebar.section_clauses">Clauses ISO 27001</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["domain-4"]' data-i18n="audit.sidebar.domain.4">&sect;4 Contexte</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["domain-5"]' data-i18n="audit.sidebar.domain.5">&sect;5 Leadership</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["domain-6"]' data-i18n="audit.sidebar.domain.6">&sect;6 Planification</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["domain-7"]' data-i18n="audit.sidebar.domain.7">&sect;7 Support</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["domain-8"]' data-i18n="audit.sidebar.domain.8">&sect;8 Realisation</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["domain-9"]' data-i18n="audit.sidebar.domain.9">&sect;9 Evaluation</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["domain-10"]' data-i18n="audit.sidebar.domain.10">&sect;10 Amelioration</div>
+    </div>
+    <div class="sidebar-group" data-panels="domain-A5,domain-A6,domain-A7,domain-A8">
+        <div class="sidebar-section sidebar-toggle" data-click="toggleGroup" data-pass-el data-i18n="audit.sidebar.section_annexe">Annexe A</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["domain-A5"]' data-i18n="audit.sidebar.domain.A5">A.5 Organisationnelles</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["domain-A6"]' data-i18n="audit.sidebar.domain.A6">A.6 Personnes</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["domain-A7"]' data-i18n="audit.sidebar.domain.A7">A.7 Physiques</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["domain-A8"]' data-i18n="audit.sidebar.domain.A8">A.8 Technologiques</div>
+    </div>
+    <div class="sidebar-group" data-panels="docreview,planning,journal">
+        <div class="sidebar-section sidebar-toggle" data-click="toggleGroup" data-pass-el data-i18n="audit.sidebar.section_outils">Outils</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["docreview"]' data-i18n="audit.sidebar.docreview">Revue documentaire</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["planning"]' data-i18n="audit.sidebar.planning">Planning</div>
+        <div class="sidebar-item" data-click="selectPanel" data-args='["journal"]' data-i18n="audit.sidebar.journal">Journal</div>
+    </div>
+    <div class="flex-spacer"></div>
+    <div class="sidebar-section" data-i18n="audit.sidebar.section_aide">Aide</div>
+    <div class="sidebar-item" data-click="toggleHelp" data-args='["methodo"]' data-i18n="audit.sidebar.methodo">Methodologie</div>
+    <div class="sidebar-item" data-click="toggleHelp" data-args='["usage"]' data-i18n="audit.sidebar.usage">Utilisation</div>
     <div class="sidebar-section" data-i18n="audit.sidebar.section_historique">Historique</div>
     <div class="sidebar-item" data-click="selectPanel" data-args='["history"]' data-i18n="audit.sidebar.snapshots">Snapshots</div>
     <div class="btn-group-sm">
@@ -251,6 +261,7 @@
 
 <script src="js/i18n.js"></script>
 <script src="js/cisotoolbox.js"></script>
+<script src="js/cisotoolbox_local.js"></script>
 <script src="js/ISO_Audit_data.js"></script>
 <script src="js/ISO_Audit_controls.js"></script>
 <script src="js/ISO_Audit_i18n_fr.js"></script>

@@ -228,5 +228,14 @@ _registerTranslations("fr", {
     "audit.export.word_ok": "Word exporte",
     "audit.export.word_loading": "Preparation de l'export...",
     "audit.export.docreview_ok": "Revue documentaire exportee",
-    "audit.status.na_export": "Non audite"
+    "audit.status.na_export": "Non audite",
+
+    "matrix.low": "Faible",
+    "matrix.moderate": "Modere",
+    "matrix.significant": "Significatif",
+    "matrix.high": "Eleve",
+    "matrix.critical": "Critique",
+    "matrix.extreme": "Extreme",
+    "matrix.x": "Impact",
+    "matrix.y": "Vraisemblance",
 });

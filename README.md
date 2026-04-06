@@ -41,7 +41,7 @@ Most audit tools are either heavyweight GRC platforms that require server infras
 - **HDS mode** -- enables HDS-specific controls when activated
 - **6 statuses** per control: Compliant, Major NC, Minor NC, Sensitive Point, Improvement Track, N/A
 - **Structured NC fields** -- criterion, factual finding, root cause, corrective action (appear only for non-conformities)
-- **Evidence fields** -- free text for findings and proof, plus photographic evidence (images)
+- **Evidence fields** -- free text for findings and proof, plus image-based evidence (images)
 - **Helper questions** -- contextual questions per control to guide the auditor
 - **Formulation templates** -- pre-written NC formulations that can be copied into the findings
 
@@ -75,7 +75,7 @@ Most audit tools are either heavyweight GRC platforms that require server infras
 | **JSON** | Native format, full backup (Save / Save As) |
 | **Encrypted JSON** | Secure backup (AES-256-GCM, PBKDF2 250k iterations) |
 | **CSV** | All controls with status, findings, evidence, NC details |
-| **Word (.docx)** | Professional audit report with cover page, executive summary, detail per domain, NC table, photographic evidence |
+| **Word (.docx)** | Professional audit report with cover page, executive summary, detail per domain, NC table, image-based evidence |
 | **Document review CSV** | Document checklist export |
 | **Planning CSV/Word** | Audit schedule export |
 
