@@ -11,7 +11,7 @@ window.CT_CONFIG = {
     getDate: function(d) { return d && d.meta ? d.meta.date : ""; }
 };
 
-let D = window.ISO_AUDIT_INIT_DATA || {};
+let D = JSON.parse(JSON.stringify(window.ISO_AUDIT_INIT_DATA || {}));
 const CONTROLS = window.ISO_AUDIT_CONTROLS || [];
 const DOMAINS = window.ISO_AUDIT_DOMAINS || [];
 const QUESTIONS = window.ISO_AUDIT_QUESTIONS || {};
