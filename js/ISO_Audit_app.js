@@ -1076,7 +1076,7 @@ function renderAll() {
         // Refresh toolbar right
         var tr = document.getElementById("toolbar-right");
         if (tr) tr.innerHTML = (typeof _getSettingsButtonHTML === "function" ? _getSettingsButtonHTML() : "") +
-            (typeof _getGithubLinkHTML === "function" ? _getGithubLinkHTML("https://github.com/CollectiveMakers/iso-audit") : "");
+            (typeof _getGithubLinkHTML === "function" ? _getGithubLinkHTML("https://github.com/CISOToolbox/audit") : "");
         _applyStaticTranslations();
         // Show/hide AI report menu item
         var menuReport = document.getElementById("menu-report");

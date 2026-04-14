@@ -55,5 +55,5 @@ MIT
 ## Links
 
 - Website: https://audit.cisotoolbox.org
-- GitHub: https://github.com/CollectiveMakers/audit.cisotoolbox.org
+- GitHub: https://github.com/CISOToolbox/audit
 - CISO Toolbox: https://www.cisotoolbox.org

@@ -202,7 +202,7 @@ L'application est un ensemble de fichiers statiques. Aucun serveur applicatif n'
 
 Ce projet est open source. Les contributions sont les bienvenues : signalements de bugs, suggestions de fonctionnalites, traductions, ameliorations du code.
 
-Depot GitHub : **https://github.com/CollectiveMakers/audit.cisotoolbox.org**
+Depot GitHub : **https://github.com/CISOToolbox/audit**
 
 ---
 
