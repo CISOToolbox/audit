@@ -36,6 +36,9 @@ _registerTranslations("fr", {
     "audit.sidebar.docreview": "Revue documentaire",
     "audit.sidebar.planning": "Planning",
     "audit.sidebar.journal": "Journal",
+    "audit.sidebar.section_aide": "Aide",
+    "audit.sidebar.methodo": "Méthodologie",
+    "audit.sidebar.usage": "Utilisation",
     "audit.sidebar.section_historique": "Historique",
     "audit.sidebar.snapshots": "Snapshots",
 
