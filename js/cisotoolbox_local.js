@@ -18,6 +18,47 @@ function _autoSave() {
     try { localStorage.setItem(key, JSON.stringify(D)); } catch(e) { showStatus(t("alert_storage_full")); }
 }
 
+// ═══════════════════════════════════════════════════════════════════════
+// PERSISTENCE ADAPTER
+// ═══════════════════════════════════════════════════════════════════════
+//
+// Uniform mutation interface shared between the opensource (localStorage)
+// and backend (REST API) persistence layers. Every mutation site in
+// the app code calls one of these three functions instead of raw
+// `_autoSave()`. The **backend** layer (`vendor_api.js`, `risk_api.js`)
+// overrides them with PATCH-based implementations; the opensource layer
+// below simply delegates to the blob-level `_autoSave()`.
+//
+// Usage in app code (TPRM_app.js, EBIOS_RM_app.js):
+//
+//   D.vendors[idx].name = val;
+//   _persist("vendor", v.id, { name: val });
+//
+//   D.vendors.push(newVendor);
+//   _persistCreate("vendor", newVendor);
+//
+//   D.vendors.splice(idx, 1);
+//   _persistDelete("vendor", v.id);
+//
+// Helper:
+//   _obj("name", val)  →  { name: val }
+//
+// See CLAUDE.md § "Persistence adapter" for the full contract.
+
+function _obj(k, v) { var o = {}; o[k] = v; return o; }
+
+function _persist(entityType, entityId, fields) {
+    _autoSave();
+}
+
+function _persistCreate(entityType, data) {
+    _autoSave();
+}
+
+function _persistDelete(entityType, entityId) {
+    _autoSave();
+}
+
 // Install a transparent undo hook on _autoSave. Each save pushes the
 // previous serialized state on _undoStack, so apps get full undo/redo
 // without sprinkling _saveState() everywhere. Apps that still call
@@ -481,4 +522,53 @@ document.addEventListener("DOMContentLoaded", function() {
         var el = document.getElementById("menu-item-save");
         if (el) el.style.display = "none";
     }
+});
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// DEMO DATA LOADING (settings panel hook)
+// ═══════════════════════════════════════════════════════════════════════
+
+function _demoSettingsHTML() {
+    return '<div class="settings-section" style="margin-top:24px;border-top:1px solid var(--border);padding-top:16px">' +
+        '<div class="settings-label">' + t("settings.demo_section") + '</div>' +
+        '<p class="fs-xs text-muted" style="margin-bottom:8px">' + t("settings.demo_note") + '</p>' +
+        '<button class="ai-btn-close" style="width:100%;padding:8px;font-size:0.85em" id="settings-load-demo">' + t("settings.demo_load") + '</button>' +
+    '</div>';
+}
+
+function _wireDemoSettings() {
+    var btn = document.getElementById("settings-load-demo");
+    if (!btn) return;
+    btn.onclick = function() {
+        var demoFile = (window._locale || "fr") === "fr" ? "demo-fr.json" : "demo-en.json";
+        if (typeof _aiClosePanel === "function") _aiClosePanel();
+        fetch(demoFile).then(function(r) {
+            if (!r.ok) throw new Error("Demo file not found: " + demoFile);
+            return r.text();
+        }).then(function(json) {
+            D = JSON.parse(json);
+            if (typeof _initDataAndRender === "function") _initDataAndRender(function() {
+                if (typeof _autoSave === "function") _autoSave();
+                showStatus(t("settings.demo_loaded"));
+            });
+        }).catch(function(e) {
+            showStatus(t("settings.demo_error") + " " + e.message);
+        });
+    };
+}
+
+_registerTranslations("fr", {
+    "settings.demo_section": "Démonstration",
+    "settings.demo_note": "Chargez un fichier d'exemple complet (société fictive MedSecure) pour découvrir les fonctionnalités de l'application.",
+    "settings.demo_load": "Charger la démonstration",
+    "settings.demo_loaded": "Démonstration chargée",
+    "settings.demo_error": "Erreur lors du chargement :"
+});
+_registerTranslations("en", {
+    "settings.demo_section": "Demonstration",
+    "settings.demo_note": "Load a complete example file (fictional company MedSecure) to explore the application features.",
+    "settings.demo_load": "Load demonstration",
+    "settings.demo_loaded": "Demonstration loaded",
+    "settings.demo_error": "Error loading demo:"
 });

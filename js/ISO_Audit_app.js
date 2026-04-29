@@ -16,7 +16,11 @@ const CONTROLS = window.ISO_AUDIT_CONTROLS || [];
 const DOMAINS = window.ISO_AUDIT_DOMAINS || [];
 const QUESTIONS = window.ISO_AUDIT_QUESTIONS || {};
 
-window.AI_APP_CONFIG = { storagePrefix: "isoaudit" };
+window.AI_APP_CONFIG = {
+    storagePrefix: "isoaudit",
+    settingsExtraHTML: function() { return _demoSettingsHTML(); },
+    onSettingsRendered: function() { _wireDemoSettings(); }
+};
 
 let _currentPanel = "dashboard";
 
