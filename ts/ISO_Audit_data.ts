@@ -1,7 +1,7 @@
 var _ASSET_BASE = "js/ISO_Audit";
 // EN translations loaded statically in index.html — mark as loaded to prevent re-fetch
-if (typeof _i18nLoaded !== "undefined")
-    _i18nLoaded["en"] = true;
+if (typeof _i18nLoaded !== "undefined") _i18nLoaded["en"] = true;
+
 window.ISO_AUDIT_INIT_DATA = {
     meta: {
         name: "",

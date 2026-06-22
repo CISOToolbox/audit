@@ -1,9 +1,11 @@
 // ═══════════════════════════════════════════════════════════════════════
 // ISO Audit — EN Translations
 // ═══════════════════════════════════════════════════════════════════════
+
 _registerTranslations("en", {
     // Label
     "audit.label": "audit",
+
     // Toolbar
     "audit.title": "Audit",
     "audit.menu.file": "File",
@@ -14,6 +16,7 @@ _registerTranslations("en", {
     "audit.menu.new": "New audit",
     "audit.menu.encrypt": "Enable encryption",
     "audit.menu.decrypt": "Disable encryption",
+
     // Sidebar
     "audit.sidebar.dashboard": "Dashboard",
     "audit.sidebar.section_clauses": "ISO 27001 Clauses",
@@ -38,6 +41,7 @@ _registerTranslations("en", {
     "audit.sidebar.usage": "How to use",
     "audit.sidebar.section_historique": "History",
     "audit.sidebar.snapshots": "Snapshots",
+
     // Panel descriptions
     "audit.desc.dashboard": "Audit dashboard: indicators, scores by domain, non-conformities.",
     "audit.desc.domain.4": "Understanding the organization and its context, interested parties, ISMS scope.",
@@ -55,6 +59,7 @@ _registerTranslations("en", {
     "audit.desc.planning": "Audit planning: allocation of domains across time slots.",
     "audit.desc.journal": "Audit journal: chronological history of actions.",
     "audit.desc.history": "Save points and change history.",
+
     // Meta fields
     "audit.meta.name": "Client name",
     "audit.meta.ref": "Audit reference",
@@ -65,6 +70,7 @@ _registerTranslations("en", {
     "audit.meta.hds_non": "No",
     "audit.meta.hds_oui": "Yes",
     "audit.meta.hds_partiel": "Partial",
+
     // Status labels
     "audit.status.c": "Conforming",
     "audit.status.ncmaj": "Major NC",
@@ -73,6 +79,7 @@ _registerTranslations("en", {
     "audit.status.pp": "Improvement opportunity",
     "audit.status.na": "N/A",
     "audit.status.non_audite": "Not audited",
+
     // Finding fields
     "audit.field.preuve": "Evidence / References",
     "audit.field.constats": "Findings",
@@ -80,16 +87,19 @@ _registerTranslations("en", {
     "audit.field.ecart_constat": "Factual finding",
     "audit.field.ecart_cause": "Root cause",
     "audit.field.ecart_action": "Corrective action",
+
     // Filters
     "audit.filter.all_status": "All statuses",
     "audit.filter.all_hds": "All",
     "audit.filter.hds_only": "HDS only",
     "audit.filter.search": "Search...",
     "audit.filter.count": "{shown}/{total} controls",
+
     // Buttons
     "audit.btn.questions": "Questions",
     "audit.btn.templates": "Templates",
     "audit.btn.copy": "Copy",
+
     // Dashboard
     "audit.dash.score": "Maturity score",
     "audit.dash.conformity": "Conformity distribution",
@@ -107,12 +117,14 @@ _registerTranslations("en", {
     "audit.dash.na": "N/A",
     "audit.dash.progress": "Progress",
     "audit.dash.ecarts": "Identified gaps",
+
     // Timer
     "audit.timer.domain": "Domain",
     "audit.timer.global": "Global",
     "audit.timer.start": "Start",
     "audit.timer.pause": "Pause",
     "audit.timer.reset": "Reset",
+
     // Journal
     "audit.journal.type_status": "Status",
     "audit.journal.type_field": "Field",
@@ -123,6 +135,7 @@ _registerTranslations("en", {
     "audit.journal.empty": "No entries in the journal.",
     "audit.journal.export_csv": "Export CSV",
     "audit.journal.clear": "Clear journal",
+
     // Doc review
     "audit.doc.recu": "Received",
     "audit.doc.incomplet": "Incomplete",
@@ -130,6 +143,7 @@ _registerTranslations("en", {
     "audit.doc.na": "N/A",
     "audit.doc.observations": "Observations",
     "audit.doc.summary": "{recu} received · {incomplet} incomplete · {manquant} missing · {na} N/A",
+
     // Planning
     "audit.planning.start_date": "Start date",
     "audit.planning.day": "Day",
@@ -141,18 +155,22 @@ _registerTranslations("en", {
     "audit.planning.generate": "Generate planning",
     "audit.planning.export_csv": "Export CSV",
     "audit.planning.export_word": "Export Word",
+
     // Export
     "audit.export.csv": "Export CSV",
     "audit.export.word": "Export Word",
     "audit.export.pack": "Export pack",
+
     // Images
     "audit.images.title": "Evidence images",
     "audit.images.add": "Add",
     "audit.images.added": "Image added",
     "audit.images.deleted": "Image deleted",
+
     // Report
     "audit.report.export_word": "Export as Word",
     "audit.report.word_exported": "Word report exported",
+
     // Snapshots
     "audit.history.create": "+ Create checkpoint",
     "audit.history.decrypt": "Decrypt snapshots",
@@ -166,8 +184,10 @@ _registerTranslations("en", {
     "audit.history.restore": "Restore",
     "audit.history.export": "Export",
     "audit.history.hint": "Snapshots are stored in the browser (localStorage). They are lost if you clear browser data. Use \"Export\" to save them as files.",
+
     // Footer
     "audit.footer": "Interactive ISO 27001 audit — Editable data, JSON backup",
+
     // Status messages
     "audit.status.modified": "Modified",
     "audit.status.status_changed": "Status changed: {ctrl} → {status}",
@@ -177,6 +197,7 @@ _registerTranslations("en", {
     "audit.export.word_loading": "Preparing export...",
     "audit.export.docreview_ok": "Document review exported",
     "audit.status.na_export": "Not audited",
+
     "matrix.low": "Low",
     "matrix.moderate": "Moderate",
     "matrix.significant": "Significant",

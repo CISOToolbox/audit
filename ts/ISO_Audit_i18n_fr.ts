@@ -1,9 +1,11 @@
 // ═══════════════════════════════════════════════════════════════════════
 // ISO Audit — Traductions FR
 // ═══════════════════════════════════════════════════════════════════════
+
 _registerTranslations("fr", {
     // Label
     "audit.label": "audit",
+
     // Toolbar
     "audit.title": "Audit",
     "audit.menu.file": "Fichier",
@@ -14,6 +16,7 @@ _registerTranslations("fr", {
     "audit.menu.new": "Nouvel audit",
     "audit.menu.encrypt": "Activer le chiffrement",
     "audit.menu.decrypt": "Désactiver le chiffrement",
+
     // Sidebar
     "audit.sidebar.dashboard": "Tableau de bord",
     "audit.sidebar.section_clauses": "Clauses ISO 27001",
@@ -38,6 +41,7 @@ _registerTranslations("fr", {
     "audit.sidebar.usage": "Utilisation",
     "audit.sidebar.section_historique": "Historique",
     "audit.sidebar.snapshots": "Snapshots",
+
     // Panel descriptions
     "audit.desc.dashboard": "Tableau de bord de l'audit : indicateurs, scores par domaine, non-conformités.",
     "audit.desc.domain.4": "Compréhension de l'organisme et de son contexte, parties intéressées, domaine d'application du SMSI.",
@@ -55,6 +59,7 @@ _registerTranslations("fr", {
     "audit.desc.planning": "Planning de l'audit : répartition des domaines sur les créneaux.",
     "audit.desc.journal": "Journal d'audit : historique chronologique des actions.",
     "audit.desc.history": "Points de sauvegarde et historique des modifications.",
+
     // Meta fields
     "audit.meta.name": "Nom du client",
     "audit.meta.ref": "Référence audit",
@@ -65,6 +70,7 @@ _registerTranslations("fr", {
     "audit.meta.hds_non": "Non",
     "audit.meta.hds_oui": "Oui",
     "audit.meta.hds_partiel": "Partiel",
+
     // Status labels
     "audit.status.c": "Conforme",
     "audit.status.ncmaj": "NC majeure",
@@ -73,6 +79,7 @@ _registerTranslations("fr", {
     "audit.status.pp": "Piste de progrès",
     "audit.status.na": "N/A",
     "audit.status.non_audite": "Non audité",
+
     // Finding fields
     "audit.field.preuve": "Preuves / Références",
     "audit.field.constats": "Constats",
@@ -80,16 +87,19 @@ _registerTranslations("fr", {
     "audit.field.ecart_constat": "Constat factuel",
     "audit.field.ecart_cause": "Cause",
     "audit.field.ecart_action": "Action corrective",
+
     // Filters
     "audit.filter.all_status": "Tous les statuts",
     "audit.filter.all_hds": "Tous",
     "audit.filter.hds_only": "HDS uniquement",
     "audit.filter.search": "Rechercher...",
     "audit.filter.count": "{shown}/{total} contrôles",
+
     // Buttons
     "audit.btn.questions": "Questions",
     "audit.btn.templates": "Modèles",
     "audit.btn.copy": "Copier",
+
     // Dashboard
     "audit.dash.score": "Score de maturité",
     "audit.dash.conformity": "Répartition de la conformité",
@@ -107,12 +117,14 @@ _registerTranslations("fr", {
     "audit.dash.na": "N/A",
     "audit.dash.progress": "Progression",
     "audit.dash.ecarts": "Écarts identifiés",
+
     // Timer
     "audit.timer.domain": "Domaine",
     "audit.timer.global": "Global",
     "audit.timer.start": "Démarrer",
     "audit.timer.pause": "Pause",
     "audit.timer.reset": "Reset",
+
     // Journal
     "audit.journal.type_status": "Statut",
     "audit.journal.type_field": "Champ",
@@ -123,6 +135,7 @@ _registerTranslations("fr", {
     "audit.journal.empty": "Aucune entrée dans le journal.",
     "audit.journal.export_csv": "Exporter CSV",
     "audit.journal.clear": "Vider le journal",
+
     // Doc review
     "audit.doc.recu": "Reçu",
     "audit.doc.incomplet": "Incomplet",
@@ -130,6 +143,7 @@ _registerTranslations("fr", {
     "audit.doc.na": "N/A",
     "audit.doc.observations": "Observations",
     "audit.doc.summary": "{recu} reçus · {incomplet} incomplets · {manquant} manquants · {na} N/A",
+
     // Planning
     "audit.planning.start_date": "Date de début",
     "audit.planning.day": "Jour",
@@ -141,18 +155,22 @@ _registerTranslations("fr", {
     "audit.planning.generate": "Générer le planning",
     "audit.planning.export_csv": "Exporter CSV",
     "audit.planning.export_word": "Exporter Word",
+
     // Export
     "audit.export.csv": "Export CSV",
     "audit.export.word": "Export Word",
     "audit.export.pack": "Pack export",
+
     // Images
     "audit.images.title": "Images de preuves",
     "audit.images.add": "Ajouter",
     "audit.images.added": "Image ajoutée",
     "audit.images.deleted": "Image supprimée",
+
     // Report
     "audit.report.export_word": "Exporter en Word",
     "audit.report.word_exported": "Rapport Word exporté",
+
     // Snapshots
     "audit.history.create": "+ Créer un point de sauvegarde",
     "audit.history.decrypt": "Déchiffrer les snapshots",
@@ -166,12 +184,15 @@ _registerTranslations("fr", {
     "audit.history.restore": "Restaurer",
     "audit.history.export": "Exporter",
     "audit.history.hint": "Les snapshots sont stockés dans le navigateur (localStorage). Ils sont perdus si vous effacez les données du navigateur. Utilisez \"Exporter\" pour les sauvegarder en fichier.",
+
     // Footer
     "audit.footer": "Audit — Audit ISO 27001 interactif, sauvegarde JSON",
+
     // Status messages
     "audit.status.modified": "Modifié",
     "audit.status.status_changed": "Statut modifié : {ctrl} → {status}",
     "audit.status.field_changed": "Champ modifié : {ctrl}.{field}",
+
     // Search
     "audit.search.placeholder": "Rechercher dans tous les contrôles...",
     "audit.search.footer": "Échap pour fermer · Ctrl+K pour ouvrir",
@@ -182,6 +203,7 @@ _registerTranslations("fr", {
     "audit.search.scope.all": "Tous les champs",
     "audit.search.scope.findings": "Constats uniquement",
     "audit.search.scope.nc": "NC uniquement",
+
     // Enhanced dashboard
     "audit.dash.gauge_title": "Score de maturité",
     "audit.dash.donut_title": "Répartition des statuts",
@@ -196,6 +218,7 @@ _registerTranslations("fr", {
     "audit.dash.non_audited": "non audités",
     "audit.dash.generate_report": "Générer rapport IA",
     "audit.dash.nc_control": "Contrôle",
+
     // AI Report
     "audit.report.title": "Rapport d'audit IA",
     "audit.report.loading": "Génération du rapport en cours...",
@@ -209,6 +232,7 @@ _registerTranslations("fr", {
     "audit.export.word_loading": "Preparation de l'export...",
     "audit.export.docreview_ok": "Revue documentaire exportee",
     "audit.status.na_export": "Non audite",
+
     "matrix.low": "Faible",
     "matrix.moderate": "Modere",
     "matrix.significant": "Significatif",
