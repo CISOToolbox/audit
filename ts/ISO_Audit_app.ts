@@ -28,17 +28,18 @@ let _currentPanel = "dashboard";
 // HELPERS
 // ═══════════════════════════════════════════════════════════════════════
 
-const STATUS_MAP: Record<string, { label: () => string; color: string }> = {
-    c: { label: function() { return t("audit.status.c"); }, color: "#16a34a" },
-    ncmaj: { label: function() { return t("audit.status.ncmaj"); }, color: "#dc2626" },
-    ncmin: { label: function() { return t("audit.status.ncmin"); }, color: "#f59e0b" },
-    ps: { label: function() { return t("audit.status.ps"); }, color: "#7c3aed" },
-    pp: { label: function() { return t("audit.status.pp"); }, color: "#3b82f6" },
-    na: { label: function() { return t("audit.status.na"); }, color: "#94a3b8" }
+const STATUS_MAP: Record<string, { label: () => string; color: string; tone: string }> = {
+    c: { label: function() { return t("audit.status.c"); }, color: "#16a34a", tone: "low" },
+    ncmaj: { label: function() { return t("audit.status.ncmaj"); }, color: "#dc2626", tone: "critical" },
+    ncmin: { label: function() { return t("audit.status.ncmin"); }, color: "#f59e0b", tone: "high" },
+    ps: { label: function() { return t("audit.status.ps"); }, color: "#7c3aed", tone: "medium" },
+    pp: { label: function() { return t("audit.status.pp"); }, color: "#3b82f6", tone: "info" },
+    na: { label: function() { return t("audit.status.na"); }, color: "#94a3b8", tone: "neutral" }
 };
 
 function statusLabel(s: string): string { return STATUS_MAP[s] ? STATUS_MAP[s].label() : ""; }
 function statusColor(s: string): string { return STATUS_MAP[s] ? STATUS_MAP[s].color : "#94a3b8"; }
+function statusTone(s: string): string { return STATUS_MAP[s] ? STATUS_MAP[s].tone : "neutral"; }
 
 function getCtrl(id: string): AuditControl | undefined { return CONTROLS.find(function(c) { return c.id === id; }); }
 var _EMPTY_FINDING: AuditFinding = { status: "", preuve: "", constats: "", ecart_critere: "", ecart_constat: "", ecart_cause: "", ecart_action: "", images: [] };
@@ -69,7 +70,7 @@ function _isStatusKey(s: string): s is AuditStatusKey {
 
 function selectPanel(panelId: string): void {
     _currentPanel = panelId;
-    document.querySelector(".sidebar")!.classList.remove("open");
+    document.querySelector(".ct-rail, .sidebar")?.classList.remove("open");
     _updateSidebarAccordion(panelId);
     document.querySelectorAll(".tab-panel").forEach(function(p) { p.classList.remove("active"); });
     var panel = document.getElementById("panel-" + panelId);
@@ -393,7 +394,7 @@ function renderDashboard(): void {
         ecarts.forEach(function(e) {
             h += '<tr><td><strong>' + esc(e.ctrl.id) + '</strong></td>';
             h += '<td>' + esc(e.ctrl.t) + '</td>';
-            h += '<td>' + badge(statusLabel(e.finding.status), statusColor(e.finding.status)) + '</td>';
+            h += '<td>' + badgeTone(statusLabel(e.finding.status), statusTone(e.finding.status)) + '</td>';
             h += '<td>' + esc(e.finding.ecart_constat || e.finding.constats || "") + '</td>';
             h += '<td>' + esc(e.finding.ecart_action || "") + '</td></tr>';
         });
