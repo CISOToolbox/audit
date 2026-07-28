@@ -907,7 +907,9 @@ function generateReport() {
 window.generateReport = generateReport;
 // Export functions are in ISO_Audit_export.js
 function _exportAIReportAsWord(text) {
-    _loadAsset("https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js", function () {
+    // JSZip 3.10.1, vendored under js/vendor/ — same-origin, so the app CSP
+    // keeps script-src 'self' with no CDN entry and the export works offline.
+    _loadAsset("js/vendor/jszip.min.js", function () {
         var m = D.meta;
         function xmlEsc(s) { return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
         function wp(txt, opts) {

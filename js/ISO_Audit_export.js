@@ -48,7 +48,9 @@ function exportWord() {
     if (!D || !D.meta)
         return;
     showStatus(t("audit.export.word_loading") || "Preparing export...");
-    _loadAsset("https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js", function () {
+    // JSZip 3.10.1, vendored under js/vendor/ — same-origin, so the app CSP
+    // keeps script-src 'self' with no CDN entry and the export works offline.
+    _loadAsset("js/vendor/jszip.min.js", function () {
         // Preload all images from IndexedDB before building the doc
         _preloadAllImages(CONTROLS, function (imageMap) {
             _buildWordDoc(CONTROLS, DOMAINS, imageMap);
