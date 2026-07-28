@@ -23,15 +23,16 @@ let _currentPanel = "dashboard";
 // HELPERS
 // ═══════════════════════════════════════════════════════════════════════
 const STATUS_MAP = {
-    c: { label: function () { return t("audit.status.c"); }, color: "#16a34a" },
-    ncmaj: { label: function () { return t("audit.status.ncmaj"); }, color: "#dc2626" },
-    ncmin: { label: function () { return t("audit.status.ncmin"); }, color: "#f59e0b" },
-    ps: { label: function () { return t("audit.status.ps"); }, color: "#7c3aed" },
-    pp: { label: function () { return t("audit.status.pp"); }, color: "#3b82f6" },
-    na: { label: function () { return t("audit.status.na"); }, color: "#94a3b8" }
+    c: { label: function () { return t("audit.status.c"); }, color: "#16a34a", tone: "low" },
+    ncmaj: { label: function () { return t("audit.status.ncmaj"); }, color: "#dc2626", tone: "critical" },
+    ncmin: { label: function () { return t("audit.status.ncmin"); }, color: "#f59e0b", tone: "high" },
+    ps: { label: function () { return t("audit.status.ps"); }, color: "#7c3aed", tone: "medium" },
+    pp: { label: function () { return t("audit.status.pp"); }, color: "#3b82f6", tone: "info" },
+    na: { label: function () { return t("audit.status.na"); }, color: "#94a3b8", tone: "neutral" }
 };
 function statusLabel(s) { return STATUS_MAP[s] ? STATUS_MAP[s].label() : ""; }
 function statusColor(s) { return STATUS_MAP[s] ? STATUS_MAP[s].color : "#94a3b8"; }
+function statusTone(s) { return STATUS_MAP[s] ? STATUS_MAP[s].tone : "neutral"; }
 function getCtrl(id) { return CONTROLS.find(function (c) { return c.id === id; }); }
 var _EMPTY_FINDING = { status: "", preuve: "", constats: "", ecart_critere: "", ecart_constat: "", ecart_cause: "", ecart_action: "", images: [] };
 function getFinding(id) {
@@ -58,7 +59,7 @@ function _isStatusKey(s) {
 // ═══════════════════════════════════════════════════════════════════════
 function selectPanel(panelId) {
     _currentPanel = panelId;
-    document.querySelector(".sidebar").classList.remove("open");
+    document.querySelector(".ct-rail, .sidebar")?.classList.remove("open");
     _updateSidebarAccordion(panelId);
     document.querySelectorAll(".tab-panel").forEach(function (p) { p.classList.remove("active"); });
     var panel = document.getElementById("panel-" + panelId);
@@ -378,7 +379,7 @@ function renderDashboard() {
         ecarts.forEach(function (e) {
             h += '<tr><td><strong>' + esc(e.ctrl.id) + '</strong></td>';
             h += '<td>' + esc(e.ctrl.t) + '</td>';
-            h += '<td>' + badge(statusLabel(e.finding.status), statusColor(e.finding.status)) + '</td>';
+            h += '<td>' + badgeTone(statusLabel(e.finding.status), statusTone(e.finding.status)) + '</td>';
             h += '<td>' + esc(e.finding.ecart_constat || e.finding.constats || "") + '</td>';
             h += '<td>' + esc(e.finding.ecart_action || "") + '</td></tr>';
         });
@@ -906,7 +907,9 @@ function generateReport() {
 window.generateReport = generateReport;
 // Export functions are in ISO_Audit_export.js
 function _exportAIReportAsWord(text) {
-    _loadAsset("https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js", function () {
+    // JSZip 3.10.1, vendored under js/vendor/ — same-origin, so the app CSP
+    // keeps script-src 'self' with no CDN entry and the export works offline.
+    _loadAsset("js/vendor/jszip.min.js", function () {
         var m = D.meta;
         function xmlEsc(s) { return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
         function wp(txt, opts) {

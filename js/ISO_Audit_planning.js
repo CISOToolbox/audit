@@ -127,7 +127,7 @@ function renderPlanning() {
                 // Time range
                 h += '<span class="slot-time" style="font-weight:700;font-family:monospace;font-size:0.85em;color:var(--text);min-width:110px">' + esc(slot.start) + ' - ' + esc(slot.end) + '</span>';
                 // Domain select
-                h += '<select class="slot-domain" style="flex:1;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82em;background:white" data-change="onSlotDomain" data-args=\'' + _da(idx) + '\' data-pass-value>';
+                h += '<select class="slot-domain" style="flex:1;padding:5px 8px;border:1px solid var(--border);border-radius:4px;font-size:0.82em;background:var(--ct-surface)" data-change="onSlotDomain" data-args=\'' + _da(idx) + '\' data-pass-value>';
                 h += '<option value="">' + t("audit.planning.select_domain") + '</option>';
                 PLANNING_DOMAINS.forEach(function (dom) {
                     h += '<option value="' + esc(dom.id) + '"' + (slot.domain === dom.id ? ' selected' : '') + '>' + esc(dom.label) + '</option>';

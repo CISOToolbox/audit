@@ -24,7 +24,7 @@
 .status-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .status-btn {
     padding: 4px 10px; border: 2px solid var(--border); border-radius: 6px;
-    cursor: pointer; font-size: 0.78em; font-weight: 600; background: white;
+    cursor: pointer; font-size: 0.78em; font-weight: 600; background: var(--ct-surface);
     color: var(--text-muted); transition: all 0.15s; user-select: none;
 }
 .status-btn:hover { border-color: var(--light-blue); color: var(--text); }
@@ -57,7 +57,7 @@
 .question-item:last-child { border-bottom: none; }
 .btn-copy-q {
     flex-shrink: 0; padding: 2px 6px; border: 1px solid var(--border);
-    border-radius: 4px; cursor: pointer; font-size: 0.8em; background: white;
+    border-radius: 4px; cursor: pointer; font-size: 0.8em; background: var(--ct-surface);
 }
 .btn-copy-q:hover { background: var(--bg-highlight); }
 
@@ -65,7 +65,7 @@
 .ctrl-actions { display: flex; gap: 6px; margin-left: auto; }
 .btn-questions, .btn-templates {
     padding: 3px 8px; border: 1px solid var(--border); border-radius: 4px;
-    cursor: pointer; font-size: 0.75em; background: white; color: var(--text-muted);
+    cursor: pointer; font-size: 0.75em; background: var(--ct-surface); color: var(--text-muted);
 }
 .btn-questions:hover, .btn-templates:hover { background: var(--bg-highlight); color: var(--light-blue); }
 
@@ -75,7 +75,7 @@
 }
 .filter-select {
     padding: 4px 8px; border: 1px solid var(--border); border-radius: 4px;
-    font-size: 0.82em; background: white;
+    font-size: 0.82em; background: var(--ct-surface);
 }
 .filter-search {
     padding: 4px 8px; border: 1px solid var(--border); border-radius: 4px;
@@ -100,20 +100,13 @@
     background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px;
     padding: 10px 14px; text-align: center; flex: 1; min-width: 100px;
 }
-.kpi-value { font-size: 1.6em; font-weight: 700; }
+.kpi-value { font-family: var(--ct-font-mono); font-variant-numeric: tabular-nums; font-size: 1.6em; font-weight: 500; color: var(--ct-ink); }
 .kpi-label { font-size: 0.75em; color: var(--text-muted); margin-top: 2px; }
 
 /* ── NC table ────────────────────────────────────────────────── */
 .nc-table { width: 100%; border-collapse: collapse; font-size: 0.82em; }
 .nc-table th { background: var(--bg); padding: 6px 10px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); }
 .nc-table td { padding: 6px 10px; border-bottom: 1px solid var(--border); }
-
-/* ── Sidebar domain badges ───────────────────────────────────── */
-.sidebar-badge {
-    font-size: 0.7em; padding: 1px 6px; border-radius: 8px; margin-left: auto;
-    background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.6);
-}
-.sidebar-badge.complete { background: rgba(22,163,74,0.3); color: #16a34a; }
 
 /* (timer-bar and ecart-card removed — unused) */
 
@@ -128,7 +121,7 @@
 .doc-status-btns { display: flex; gap: 4px; }
 .doc-status-btn {
     padding: 2px 8px; border: 1px solid var(--border); border-radius: 4px;
-    cursor: pointer; font-size: 0.72em; font-weight: 600; background: white;
+    cursor: pointer; font-size: 0.72em; font-weight: 600; background: var(--ct-surface);
 }
 .doc-status-btn.active { color: white; }
 .doc-status-btn[data-ds="recu"].active { background: var(--green); border-color: var(--green); }
@@ -149,7 +142,7 @@
 }
 .planning-slot:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 .slot-time { font-weight: 700; font-family: monospace; white-space: nowrap; min-width: 110px; }
-.slot-domain { flex: 1; padding: 5px 8px; border: 1px solid var(--border); border-radius: 4px; font-size: 0.82em; background: white; }
+.slot-domain { flex: 1; padding: 5px 8px; border: 1px solid var(--border); border-radius: 4px; font-size: 0.82em; background: var(--ct-surface); }
 .slot-actions { display: flex; gap: 4px; }
 
 /* ── Journal ─────────────────────────────────────────────────── */
@@ -178,7 +171,7 @@
 }
 .search-overlay.open { display: flex; }
 .search-panel {
-    background: white; border-radius: 12px; width: 100%; max-width: 600px;
+    background: var(--ct-surface); border-radius: 12px; width: 100%; max-width: 600px;
     max-height: 80vh; display: flex; flex-direction: column;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
@@ -190,7 +183,7 @@
 .search-input:focus { border-color: var(--light-blue); }
 .search-scope {
     padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px;
-    font-size: 0.82em; background: white; cursor: pointer;
+    font-size: 0.82em; background: var(--ct-surface); cursor: pointer;
 }
 .search-count { font-size: 0.78em; color: var(--text-muted); padding: 0 16px 8px; }
 .search-results {
@@ -212,7 +205,7 @@
     font-size: 0.8em; color: var(--text-muted); margin-top: 2px;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-.search-result-match mark { background: #fef9c3; padding: 1px 2px; border-radius: 2px; }
+.search-result-match mark { background: var(--ct-medium-tint); color: var(--ct-medium-ink); padding: 1px 2px; border-radius: 2px; }
 .search-result-status {
     font-size: 0.7em; font-weight: 600; padding: 1px 6px; border-radius: 4px;
     color: white; margin-left: 6px; vertical-align: middle;
@@ -289,12 +282,6 @@
 .img-overlay-content img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 4px; }
 .img-overlay-name { color: rgba(255,255,255,0.7); font-size: 0.82em; margin-top: 8px; }
 
-/* ── Sidebar utilities ────────────────────────────────────────── */
-.sidebar .btn-undo, .sidebar .btn-redo {
-    background: none; border: none; color: rgba(255,255,255,0.5);
-    padding: 2px 4px;
-}
-.sidebar .btn-undo:hover, .sidebar .btn-redo:hover { color: white; }
 
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 768px) {

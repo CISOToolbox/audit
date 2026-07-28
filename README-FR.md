@@ -160,7 +160,7 @@ js/
 
 | Mesure | Detail |
 |--------|--------|
-| **CSP** | `script-src 'self' https://cdn.jsdelivr.net` -- pas de scripts inline, pas de `eval` |
+| **CSP** | `script-src 'self'` -- pas de scripts inline, pas de `eval`, aucun CDN externe |
 | **X-Frame-Options** | `DENY` -- empeche le clickjacking |
 | **X-Content-Type-Options** | `nosniff` |
 | **Permissions-Policy** | Desactive camera, microphone, geolocalisation, paiement, USB, capteurs |
