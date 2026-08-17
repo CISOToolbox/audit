@@ -1,0 +1,24 @@
+# Files replicated from the private shared/ repository.
+# Do not edit them here — see CONTRIBUTING.md.
+js/ai_common.js
+js/cisotoolbox.js
+js/cisotoolbox_local.js
+js/ct_bulkbar.js
+js/ct_modal.js
+js/ct_refselect.js
+js/ct_settings.js
+js/ct_table.js
+js/i18n.js
+css/cisotoolbox.css
+ts/types/ai_common.d.ts
+ts/types/cisotoolbox.d.ts
+ts/types/cisotoolbox_local.d.ts
+ts/types/ct-core.d.ts
+ts/types/ct-vendor-libs.d.ts
+ts/types/ct_settings.d.ts
+ts/types/gen-ai_common.d.ts
+ts/types/gen-cisotoolbox.d.ts
+ts/types/gen-cisotoolbox_local.d.ts
+ts/types/gen-ct_settings.d.ts
+ts/types/gen-i18n.d.ts
+ts/types/i18n.d.ts

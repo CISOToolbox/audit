@@ -1,0 +1,78 @@
+# ── Standalone audit ─────────────────────────────────────────────
+# Single-module deployment. App + dedicated PostgreSQL.
+# Usage:
+#   cp .env.example .env  # set DB_PASSWORD, JWT_SECRET
+#   docker compose up -d
+# App available on http://localhost:8086
+
+services:
+  audit-app:
+    build: .
+    container_name: ciso-audit-standalone
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://audit:${DB_PASSWORD:-ciso2026}@audit-db:5432/audit
+      - JWT_SECRET=${JWT_SECRET:-change-me-in-prod}
+      - APP_URL=${APP_URL:-http://localhost:8086}
+      # Data-at-rest key for stored secrets (AI keys) (SEC-01).
+      # REQUIRED and DEDICATED: never fall back to JWT_SECRET — that would
+      # couple the session-forgery and data-at-rest trust domains.
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY:?ENCRYPTION_KEY is required (openssl rand -hex 32) - see .env.example}
+      # ── Standalone auth posture (AUTH-01) ──────────────────────
+      # This module issues AND verifies its own sessions; there is no Pilot
+      # here. MODULE_NAME selects both the audience claim ("ciso-module:audit")
+      # and the signing key, derived as
+      #   HKDF-SHA256(JWT_SECRET, info="ciso-module:audit")
+      # so JWT_SECRET is never used as a signing key and a token minted by
+      # another module (or another standalone deployment sharing the secret)
+      # fails audience *and* signature verification here.
+      # Leaving MODULE_NAME unset would collapse every standalone module onto
+      # the same "ciso-module:module" key — do not remove it.
+      - AUTH_MODE=${AUTH_MODE:-standalone}
+      - MODULE_NAME=audit
+      - MODULE_COOKIE=audit_token
+    ports:
+      - "8086:8080"
+    depends_on:
+      audit-db:
+        condition: service_healthy
+    networks:
+      - audit-net
+
+  audit-db:
+    image: postgres:16-alpine
+    container_name: ciso-audit-db-standalone
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    # CNT-03 — minimal capability set for the official postgres image:
+    # entrypoint chowns PGDATA (CHOWN/FOWNER/DAC_OVERRIDE) then steps down
+    # from root to the postgres user via gosu (SETUID/SETGID).
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUID
+    environment:
+      - POSTGRES_USER=audit
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-ciso2026}
+      - POSTGRES_DB=audit
+    volumes:
+      - audit-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U audit"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - audit-net
+
+volumes:
+  audit-db-data:
+
+networks:
+  audit-net:
