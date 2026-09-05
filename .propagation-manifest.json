@@ -1,6 +1,6 @@
 {
   "$comment": "Files replicated from a private upstream repository. Do NOT edit them here: the next propagation overwrites them and CI rejects local edits. See CONTRIBUTING.md, section 'Shared code'.",
-  "generated": "2026-09-05T17:27:11Z",
+  "generated": "2026-09-05T20:14:29Z",
   "checker": "check-replicated-files.py (run it in CI)",
   "files": {
     "Dockerfile": "sha256:013fb7e624fb6cb1e5c6a557610a383cb176ab418c3a9e009c70a94195b3714f",
@@ -13,7 +13,7 @@
     "alembic/versions/002_server_rev.py": "sha256:72d9d4583ab918edcc4469250279552e29fc3ba7404f7533fb625a7c7dc66279",
     "alembic/versions/003_owner_set_null.py": "sha256:7ab58b749fdef944bbc743b613ee228a695021246215c2e53a0d7f652ca92d08",
     "app/css/ISO_Audit.css": "sha256:39af29f64c1c3b3de454350f3c365aaed993ec8d09459016d3b7bcf491f53806",
-    "app/css/cisotoolbox.css": "sha256:a406cc2ef7c2a17c818bc8f0e13d891b1bf45a1dd607f5286146e87f6c3264ad",
+    "app/css/cisotoolbox.css": "sha256:3143b0ac334266cfbd1878b7d992ee132425a531ce1c52954dfaf6c35c5ded09",
     "app/css/login.css": "sha256:6f42bd1422b982ecdc267876c7bfc423c660603b0a63362a0ebc628be34cf607",
     "app/demo-en.json": "sha256:e3e800c1d9683ceefabc7914f6c33351d3ebbccf17fc166db4bd25df6d76a46b",
     "app/demo-fr.json": "sha256:207497c0c7010ba3747d3e20a7297643cb1a8d5ac3e75841891aa19483ba8b04",
@@ -48,7 +48,7 @@
     "app/js/ai_backend.js": "sha256:00edcf30b642f5dd4eb5e0c23e96e102612a5eb3c66f0840575a9394930218c3",
     "app/js/ai_common.js": "sha256:d6f33442450fd218263e1e4c10168cf934062595aa88491794c337483deea4bf",
     "app/js/audit_api.js": "sha256:77a7591dd1c946b1a02d8a8e05b4f07ed182076b1b248d8ac433ba5abc5ce4b9",
-    "app/js/cisotoolbox.js": "sha256:6b0dc6c0b56aecb45fe0f659aa73e8b8f73e6c32f959f8bbb9fb7cdc2f1a6397",
+    "app/js/cisotoolbox.js": "sha256:bb96d75aacfa4e20fb198eed8a46a0bb651c1ee5afedc985cd2f9f039a33a235",
     "app/js/cisotoolbox_backend.js": "sha256:b8126b062c434358711015598623236517d41271fb3a17215694f11035b94c92",
     "app/js/ct_bulkbar.js": "sha256:222e5b66144da524916cd60688ecfa1db21c6f302c36696f717bebe48c155202",
     "app/js/ct_measure_modal.js": "sha256:3f583f81fb7a6090f4adec17edd3abb5c7e9f79fd1eac2266578734641461ea7",
