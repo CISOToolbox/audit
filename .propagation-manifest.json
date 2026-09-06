@@ -1,6 +1,6 @@
 {
   "$comment": "Files replicated from a private upstream repository. Do NOT edit them here: the next propagation overwrites them and CI rejects local edits. See CONTRIBUTING.md, section 'Shared code'.",
-  "generated": "2026-09-05T20:14:29Z",
+  "generated": "2026-09-06T06:05:45Z",
   "checker": "check-replicated-files.py (run it in CI)",
   "files": {
     "Dockerfile": "sha256:013fb7e624fb6cb1e5c6a557610a383cb176ab418c3a9e009c70a94195b3714f",
@@ -54,7 +54,6 @@
     "app/js/ct_measure_modal.js": "sha256:3f583f81fb7a6090f4adec17edd3abb5c7e9f79fd1eac2266578734641461ea7",
     "app/js/ct_modal.js": "sha256:762de20ff2c510e4cba7af665ebc0517e97c69c35d1780742e1232579b5873a4",
     "app/js/ct_modules.js": "sha256:54bcaaf4762d05055b11e403935c0847fb75174babfc61ae163433f8cb73d002",
-    "app/js/ct_refselect.js": "sha256:f48ca3771699432b83c5c6d25918c144f17e474aa851e45a2e4f816a7eaebc6b",
     "app/js/ct_schema.js": "sha256:ce331e31c329bc5d318232130fc7e7cd35dbaf04d7a4bf42fb1e3b6b05024003",
     "app/js/ct_settings.js": "sha256:cf67b92a1579bd8033dbb991ece1e7bd3ef5bb618e6dfc574b10bfd3b439c6ab",
     "app/js/ct_table.js": "sha256:1e4a86d8dc8f1dfcd25cab37439c52b231ab9788cd16b4c4d21682b65f4e6439",
@@ -101,6 +100,7 @@
     "app/ts/types/i18n_core_fr.d.ts": "sha256:fa39368005b6e15cce6e8664fb3c251ecfb95d919be42ff39072de616f4f5875",
     "app/ts/types/login.d.ts": "sha256:f8228a0f22d7d96bbece5676f1277f92288ba95f852c0397d37bb0f3201d298f",
     "app/tsconfig.json": "sha256:561e6fdbe3b950f5f6f7a8089f8b0cd77439b6b4478c160615bcabffba4c7df3",
+    "check-replicated-files.py": "sha256:dc673db3a6c15a1e07766588847ca47ba21be77f6b1a6f660c5d3efc33c10da9",
     "docker-entrypoint.sh": "sha256:b3b5749eef3caed6b622b7e75d2532287cf98b19ca33592a7d91207ae00987a1",
     "requirements.txt": "sha256:5ad9f1882028211fd95ca6ee527061e9b36d4e4f08a77d0054368fde9d9de6b1",
     "src/__init__.py": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -123,7 +123,6 @@
     "src/routes/internal.py": "sha256:e8e01798f50f9102634d5eed58670cea2cd4d89a1ed0a6a8a5fc57aeb32cc272",
     "src/routes/measures.py": "sha256:47954b27287bc19203de7b31e07a30e4dfea99f1a5be85aa450bc45d9e10266f",
     "src/routes/projects.py": "sha256:1e36a5a8abf49196090aae0464aebb44fb1b485dc496cb68115f08955fb58352",
-    "src/routes/snapshots.py": "sha256:af9bc8d92eaf9f37aed0e6166011dc2db1c86939d93e0b69593aac79fa07d4dd",
     "src/routes/users.py": "sha256:e884c126c5eb7210a0f0553100df520a8ce1c0f5c7789eafebc8884b49a51f17",
     "src/schema_migrations.py": "sha256:b8cf9c7cd67cf6fb186a9e805a65e58911f9499adfc2dbd1444b4fd1efee1000",
     "src/schemas.py": "sha256:605981b788a4fd14b55f9e49f7cbf13f14f7d176222765e1eec14c59e6f9ce97",
