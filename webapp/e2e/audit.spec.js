@@ -121,12 +121,23 @@ test.describe('ISO 27001 Audit — local frontend journeys', () => {
     });
 
     // ── 5. Language preference persists locally ────────────────────────
-    test('language toggle persists across a reload (localStorage ct_lang)', async ({ page }) => {
+    // ct_toggleLang opens a dropdown menu (#ct-lang-menu) of the available
+    // languages; the actual switch happens on clicking an item (ct_setLang).
+    // Clicking the trigger alone no longer switches anything.
+    test('language menu switches and the choice persists across a reload (ct_lang)', async ({ page }) => {
         await openApp(page);
 
         const before = await page.evaluate(() => localStorage.getItem('ct_lang'));
+
+        // Open the menu: at least two languages (fr + en) are deployed.
         await page.locator('[data-click="ct_toggleLang"]').click();
-        await page.waitForTimeout(400);
+        const menu = page.locator('#ct-lang-menu');
+        await expect(menu).toBeVisible();
+        expect(await menu.locator('.ct-lang-item').count()).toBeGreaterThanOrEqual(2);
+
+        // Pick the language that is not active → an effective switch.
+        await menu.locator('.ct-lang-item:not(.active)').first().click();
+        await expect(page.locator('#ct-lang-menu')).toHaveCount(0);
 
         const after = await page.evaluate(() => localStorage.getItem('ct_lang'));
         expect(after).not.toBe(before);
