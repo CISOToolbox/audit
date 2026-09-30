@@ -174,7 +174,7 @@ function cardHTML(c, f) {
     // Images container (rendered async by ISO_Audit_images.js)
     var imgCount = (f.images && f.images.length) || 0;
     h += '<div class="img-section">';
-    h += '<div class="img-section-header">📷 ' + t("audit.images.title") + (imgCount > 0 ? ' (' + imgCount + ')' : '') + '</div>';
+    h += '<div class="img-section-header">' + _icon("image", 14) + ' ' + t("audit.images.title") + (imgCount > 0 ? ' (' + imgCount + ')' : '') + '</div>';
     h += '<div id="images-' + c.id.replace(/\./g, "-") + '"></div>';
     h += '</div>';
     h += '</div>';
