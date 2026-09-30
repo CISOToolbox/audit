@@ -66,6 +66,9 @@ _registerTranslations("en", {
 
     // Meta fields
     "audit.meta.name": "Client name",
+    "audit.meta.name_ph": "Audited organisation",
+    "audit.meta.auditor_ph": "Auditor name",
+    "audit.meta.scope_ph": "Audit scope",
     "audit.meta.ref": "Audit reference",
     "audit.meta.date": "Date",
     "audit.meta.auditor": "Auditor",
