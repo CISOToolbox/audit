@@ -31,7 +31,7 @@
 
 1. Visit [audit.cisotoolbox.org](https://audit.cisotoolbox.org) or clone this repo
 2. Open `index.html` in a browser
-3. Start a new audit — the repository ships no demo dataset for now (new ones will be generated later)
+3. Start a new audit — the repository also ships a fictional demo dataset (MedSecure): `demo-fr.json`, `demo-en.json`
 4. No backend, no account required
 
 ## Architecture
@@ -134,19 +134,24 @@ sent to a server — there is no server.
 
 ```
 css/                  # 2 files
-e2e/                  # 4 files
-js/                   # 19 files
-ts/                   # 22 files
-.replicated-files
+e2e/                  # 5 files
+fonts/                # 6 files (embedded, no external font request)
+js/                   # 22 files
+ts/                   # 25 files
+.gitignore
+.htaccess.example
 ARCHITECTURE.md
 CONTRIBUTING.md
 LICENSE
 README-FR.md
 README.md
 SECURITY.md
+demo-en.json
+demo-fr.json
 favicon.svg
 index.html
 logo.svg
+nginx-security.conf.example
 tsconfig.json
 ```
 
