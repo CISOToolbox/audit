@@ -33,6 +33,22 @@ async function openApp(page, url = '/') {
     await expect(page.locator('.ct-appbar')).toBeVisible();
 }
 
+// The app has no backend: no journey may call an /api/ path, not even on its
+// own origin (which the external-request check below cannot see).
+let backendCalls = [];
+test.beforeEach(({ page }) => {
+    backendCalls = [];
+    page.on('request', (r) => {
+        const u = new URL(r.url());
+        if (['127.0.0.1', 'localhost'].includes(u.hostname) && u.pathname.includes('/api/')) {
+            backendCalls.push(`${r.method()} ${r.url()}`);
+        }
+    });
+});
+test.afterEach(() => {
+    expect(backendCalls, `backend calls from a browser-only app: ${backendCalls.join(' | ')}`).toEqual([]);
+});
+
 /**
  * Give the suite an audit to work with, created the way a user would: by
  * typing into the metadata form on the dashboard. Returns the organisation
