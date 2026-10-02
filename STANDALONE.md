@@ -67,8 +67,8 @@ it — and must be a **dedicated** value, distinct from `JWT_SECRET`. The former
 silent fallback to `JWT_SECRET` coupled the session-forgery and data-at-rest
 trust domains: one leak broke both, and neither could be rotated on its own.
 
-Rotating it means re-encrypting what is already stored — see
-`../tools/ROTATE_ENCRYPTION_KEY.md`.
+Changing it later makes the credentials already stored unreadable: keep it
+stable, or enter those credentials again after the change.
 
 ## Backup & restore
 
