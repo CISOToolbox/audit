@@ -49,7 +49,6 @@ The Audit module is a browser-based, client-side tool for conducting ISO 27001:2
 | `ISO_Audit_export.js` | 24 KB | Export: CSV, Word (OOXML), doc review CSV |
 | `ISO_Audit_images.js` | 10 KB | Evidence image management via IndexedDB: upload, compress, view, delete |
 | `ai_common.js` | 36 KB | Shared AI module: Anthropic/OpenAI providers, settings panel |
-| `ct_refselect.js` | 6 KB | Shared multi-select dropdown (not actively used in Audit) |
 | `referentiels_catalog.js` | 3 KB | Shared compliance framework catalog (not actively used in Audit) |
 
 ---
